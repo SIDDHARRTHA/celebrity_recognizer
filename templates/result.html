@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Celebrity Prediction Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .container {
+      background: #fff;
+      padding: 40px 32px;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(80,42,165,0.25);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      color: #502aa5;
+    }
+    img {
+      border-radius: 12px;
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 3px 16px rgba(80, 42, 165, 0.3);
+    }
+    h2 {
+      margin-top: 24px;
+      font-size: 1.5rem;
+      color: #6a2da9;
+    }
+    h3 {
+      margin-top: 8px;
+      font-weight: 500;
+      color: #9546c4;
+    }
+    a {
+      display: inline-block;
+      margin-top: 28px;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(90deg,#a18cd1 0%,#502aa5 100%);
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    a:hover {
+      background: linear-gradient(90deg,#502aa5 0%,#a18cd1 100%);
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 28px 16px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+      h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Prediction Result</h1>
+    <img src="{{ image_path }}" alt="Uploaded Image">
+    <h2>Predicted Celebrity: {{ label }}</h2>
+    <h3>Confidence: {{ confidence }}</h3>
+    <a href="/">Try Another Image</a>
+  </div>
+</body>
+</html>

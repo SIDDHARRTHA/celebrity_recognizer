@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Celebrity Face Recognition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Material Icons for the upload button -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      padding: 20px 0;
+    }
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .upload-container {
+      background: #fff;
+      padding: 40px 32px;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(80,42,165,0.25);
+      max-width: 400px;
+      margin: 0 auto 40px auto;
+      text-align: center;
+    }
+    .info-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(80,42,165,0.25);
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      color: #502aa5;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #502aa5;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #a18cd1;
+      padding-bottom: 5px;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: #6a2da9;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+    .upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      padding: 18px;
+      border: 2px dashed #c1a8f7;
+      border-radius: 10px;
+      background: #faf7fe;
+      transition: border .3s;
+      margin-bottom: 16px;
+    }
+    .upload-label:hover {
+      border: 2px solid #502aa5;
+      background: #f3edfc;
+    }
+    .material-icons {
+      font-size: 48px;
+      color: #8e24aa;
+      margin-bottom: 8px;
+    }
+    .upload-text {
+      color: #7c55c0;
+      font-size: 1.12rem;
+      margin-bottom: 0;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .submit-btn {
+      color: #fff;
+      background: linear-gradient(90deg,#a18cd1 0%,#502aa5 100%);
+      border: none;
+      padding: 14px 0;
+      font-size: 1.09rem;
+      border-radius: 8px;
+      width: 100%;
+      transition: background 0.4s;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(80,42,165,0.12);
+      margin-top: 10px;
+      font-family: inherit;
+    }
+    .submit-btn:hover {
+      background: linear-gradient(90deg,#502aa5 0%,#a18cd1 100%);
+    }
+    .project-overview {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .how-it-works {
+      background: #f8f6fc;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+    .how-it-works ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .how-it-works li {
+      margin-bottom: 8px;
+    }
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+    .tech-table th, .tech-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    .tech-table th {
+      background: #a18cd1;
+      color: white;
+    }
+    .tech-table tr:nth-child(even) {
+      background: #f8f6fc;
+    }
+    .celebrity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+    .celebrity-item {
+      background: #f8f6fc;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #502aa5;
+    }
+    .features-list {
+      list-style: none;
+      padding: 0;
+    }
+    .features-list li {
+      background: #f8f6fc;
+      margin-bottom: 8px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      position: relative;
+      padding-left: 35px;
+    }
+    .features-list li:before {
+      content: "✓";
+      color: #502aa5;
+      font-weight: bold;
+      position: absolute;
+      left: 15px;
+    }
+    .ready-message {
+      background: linear-gradient(90deg,#a18cd1 0%,#502aa5 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 0 10px;
+      }
+      .upload-container, .info-container {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+      .celebrity-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Upload Form Section -->
+    <div class="upload-container">
+      <h1>Celebrity Face Recognition</h1>
+      <form action="/predict" method="POST" enctype="multipart/form-data">
+        <label class="upload-label">
+          <span class="material-icons">face</span>
+          <span class="upload-text" id="upload-text">Choose an image to upload</span>
+          <input type="file" name="file" id="fileInput" accept="image/*" required>
+        </label>
+        <input type="submit" class="submit-btn" value="Predict">
+      </form>
+    </div>
+
+    <!-- Project Information Section -->
+    <div class="info-container">
+      <h2>Project Overview</h2>
+      <p class="project-overview">
+        This project is a deep learning-based facial recognition system that identifies popular celebrities from an uploaded image. 
+        It leverages Convolutional Neural Networks (CNNs) trained on a dataset of well-known faces, using TensorFlow and Keras for model development.
+      </p>
+
+      <h3>How It Works</h3>
+      <div class="how-it-works">
+        <ol>
+          <li><strong>Upload:</strong> User uploads an image through the interface.</li>
+          <li><strong>Pre-processing:</strong> Image is resized and normalized using OpenCV.</li>
+          <li><strong>Prediction:</strong> CNN model predicts the class index.</li>
+          <li><strong>Result:</strong> The predicted celebrity name and model confidence score (accuracy) are shown to the user in a styled results page.</li>
+        </ol>
+      </div>
+
+      <h3>Technology Stack</h3>
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th>Technology</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Python</td><td>Backend logic and image processing</td></tr>
+          <tr><td>TensorFlow/Keras</td><td>Building and training the CNN model</td></tr>
+          <tr><td>Flask</td><td>Web framework to serve the application</td></tr>
+          <tr><td>OpenCV</td><td>Image pre-processing</td></tr>
+          <tr><td>HTML/CSS</td><td>Frontend layout and styling</td></tr>
+          <tr><td>Bootstrap (Optional)</td><td>Responsive and styled web components</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Faces Recognized By This Model</h3>
+      <p>The model has been trained on images of the following celebrities:</p>
+      <div class="celebrity-grid">
+        <div class="celebrity-item">Angelina Jolie</div>
+        <div class="celebrity-item">Brad Pitt</div>
+        <div class="celebrity-item">Denzel Washington</div>
+        <div class="celebrity-item">Hugh Jackman</div>
+        <div class="celebrity-item">Jennifer Lawrence</div>
+        <div class="celebrity-item">Johnny Depp</div>
+        <div class="celebrity-item">Kate Winslet</div>
+        <div class="celebrity-item">Leonardo DiCaprio</div>
+        <div class="celebrity-item">Megan Fox</div>
+        <div class="celebrity-item">Natalie Portman</div>
+        <div class="celebrity-item">Nicole Kidman</div>
+        <div class="celebrity-item">Robert Downey Jr.</div>
+        <div class="celebrity-item">Sandra Bullock</div>
+        <div class="celebrity-item">Scarlett Johansson</div>
+        <div class="celebrity-item">Tom Cruise</div>
+        <div class="celebrity-item">Tom Hanks</div>
+        <div class="celebrity-item">Will Smith</div>
+      </div>
+
+      <h3>Features</h3>
+      <ul class="features-list">
+        <li>Simple and intuitive UI</li>
+        <li>Fast predictions</li>
+        <li>Displays confidence of the prediction</li>
+        <li>Scalable architecture for adding more celebrities</li>
+      </ul>
+
+      <div class="ready-message">
+        <strong>Ready to try it?</strong><br>
+        Simply upload your image above and discover which celebrity you resemble!
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Display chosen file name
+    document.getElementById('fileInput').addEventListener('change', function(){
+      const fileName = this.files[0]?.name || "Choose an image to upload";
+      document.getElementById('upload-text').textContent = fileName;
+    });
+  </script>
+</body>
+</html>
