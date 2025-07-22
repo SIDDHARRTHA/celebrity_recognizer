@@ -69,11 +69,12 @@ Below are actual screenshots from the app:
    ```
 
 ## 📈 Future Enhancements
-- Add webcam-based face capture
-- Expand dataset to include more celebrities
-- Add face bounding box and overlay on image
-- Deploy online via Render, Railway, or Hugging Face Spaces
 
+## Model Training
+
+To train the `celebrity_face_model.h5`, use the following Google Colab notebook:
+
+[Celebrity Face Model Training on Colab](https://colab.research.google.com/drive/1ibWdDSBqFJx_W-xinFok90ie2y5mhPp1?usp=sharing)
 ## 🧑‍💻 Author
 **Siddharrtha Shankar**  
 “A B.Tech student trying to make an evolution in the IT industry.”
